@@ -58,5 +58,11 @@
     "weight": "50",
     "bmi": "18.14",
     "status": "Underweight"
+  },
+  {
+    "height": "200",
+    "weight": "70",
+    "bmi": "17.50",
+    "status": "Underweight"
   }
 ]
