@@ -70,5 +70,41 @@
     "weight": "40",
     "bmi": "17.78",
     "status": "Underweight"
+  },
+  {
+    "height": "140",
+    "weight": "50",
+    "bmi": "25.51",
+    "status": "Overweight"
+  },
+  {
+    "height": "180",
+    "weight": "60",
+    "bmi": "18.52",
+    "status": "Normal weight"
+  },
+  {
+    "height": "170",
+    "weight": "55",
+    "bmi": "19.03",
+    "status": "Normal weight"
+  },
+  {
+    "height": "155",
+    "weight": "50",
+    "bmi": "20.81",
+    "status": "Normal weight"
+  },
+  {
+    "height": "130",
+    "weight": "40",
+    "bmi": "23.67",
+    "status": "Normal weight"
+  },
+  {
+    "height": "120",
+    "weight": "35",
+    "bmi": "24.31",
+    "status": "Normal weight"
   }
 ]
