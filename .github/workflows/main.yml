@@ -20,7 +20,7 @@ jobs:
       uses: distributhor/workflow-webhook@v2
       env: 
         webhook_url: "https://api.render.com/deploy/srv-cioe9jtgkuvh5gnd2tn0?key=nLq92Ir9-_g"
-        webhook_secrets: "nLq92Ir9-_g"
+        webhook_secret: "nLq92Ir9-_g"
 
     - uses: bounceapp/render-action@0.6.0
       with:
