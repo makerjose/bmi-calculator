@@ -1,0 +1,9 @@
+# Script to deploy on the render cloud platform
+
+name: Node.js CI
+
+on: 
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
