@@ -1,4 +1,36 @@
-# Script to deploy on the render cloud platform
+# # Script to deploy on the render cloud platform
+
+# name: Node.js CI
+
+# on: 
+#   push:
+#     branches: [ main ]
+#   pull_request:
+#     branches: [ main ]
+
+# jobs:
+#   build:
+
+#     runs-on: ubuntu-latest
+
+#     steps:
+#     - uses: actions/checkout@v3
+
+#     - name: Invoke deployment hook
+#       uses: distributhor/workflow-webhook@v2 #tricky spelling (distributhor)
+#       env: 
+#         webhook_url: ${{secrets.DEPLOY_HOOK_URL}}
+#         webhook_secret: ${{secrets.DEPLOY_HOOK_KEY}}
+
+#     - uses: bounceapp/render-action@0.6.0
+#       with:
+#         render-token: ${{secrets.RENDER_API_KEY}}
+#         github-token: ${{secrets.ACC_API_KEY}} #this is the github token
+#         service-id: "srv-cioe9jtgkuvh5gnd2tn0" #this id is unique for each app / extracted from the deploy hook
+#         retries: 20
+#         wait: 16000
+#         sleep: 30000
+
 
 name: Node.js CI
 
@@ -10,28 +42,40 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
 
+    # Set up Node.js environment
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '19' 
+
+    #install dependencies and run tests
+    - name: Install dependencies and run tests
+      run: |
+        npm install
+        npm test
+
+    # deployment hook 
     - name: Invoke deployment hook
-      uses: distributhor/workflow-webhook@v2 #tricky spelling (distributhor)
+      uses: distributhor/workflow-webhook@v2     #tricky spelling (distributhor)
       env: 
         webhook_url: ${{secrets.DEPLOY_HOOK_URL}}
         webhook_secret: ${{secrets.DEPLOY_HOOK_KEY}}
 
-    - uses: bounceapp/render-action@0.6.0
+    # deploy using render
+    - name: Deploy to Render
+      uses: bounceapp/render-action@0.6.0
       with:
         render-token: ${{secrets.RENDER_API_KEY}}
-        github-token: ${{secrets.ACC_API_KEY}} #this is the github token
-        service-id: "srv-cioe9jtgkuvh5gnd2tn0" #this id is unique for each app / extracted from the deploy hook
+        github-token: ${{secrets.ACC_API_KEY}}
+        service-id: "srv-cioe9jtgkuvh5gnd2tn0"
         retries: 20
         wait: 16000
         sleep: 30000
-
-
 
 
         
